@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Component} from 'react';
+import Navigation from './components/NavBar';
+import { Route, Switch } from 'react-router';
+import Home from './components/HomeComponent';
+import Task from './components/TaskComponent';
+import User from './components/UserComponent';
+import Login from './components/LoginPage';
+import ResetPassword from './components/ResetPassword';
+import PrivateRoute from './helper/Private.Route';
+import AddTask from './components/AddTask';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+    render(){
+        return(
+            
+
+    <React.Fragment>
+
+    
+
+            
+        <Navigation/>
+                <Route path='/' exact component={Login}/>
+                
+                
+                <Switch>
+                    <PrivateRoute path="/home" exact component={Home}/>
+                    <PrivateRoute path='/task' exact component={Task}/>
+                    <PrivateRoute path='/user' exact component={User}/>
+                    <PrivateRoute path='/addTask' exact component={AddTask}/>
+                    <PrivateRoute path='/resetpassword' exact component={ResetPassword}/>
+                </Switch>
+            </React.Fragment>
+        )
+    }
 }
 
-export default App;
+export default App; 
