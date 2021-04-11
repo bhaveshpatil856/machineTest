@@ -6,6 +6,9 @@ class User extends Component{
 
 constructor(props){
     super();
+    this.state = {
+        password:'********'
+    }
 }
 
 data= JSON.parse(localStorage.getItem('currentUser'));
@@ -17,12 +20,29 @@ Logout= () => {
     window.location.reload();
 }
 
-// decryptPassWord = (value) => {
-//     let i=0;
-//     for(i=0;i < value.length;i++){
-//     ;
-//     }
-// } 
+decryptPassWord = (value) => {
+    console.log(value.length);
+    Array.from(value);
+    let i=0;
+    for(i=0;i< value.length;i++){
+        value.replace('********')
+        //console.log("*");
+    }
+    return value;
+    // let i=0;
+    // for(i=0;i < value.length;i++){
+    // ;
+    // }
+} 
+
+showPassword= () => {
+    if(this.state.password === this.data.userPassword){
+        this.setState({password: "********"});
+    }else{
+    this.setState({password: this.data.userPassword});
+}
+}
+
 
     render(){
        // console.log(this.data.userName);
@@ -35,10 +55,19 @@ Logout= () => {
                     </div>
                 </div>
                 <div className="row" style={{margin:"20px"}}>
-                    <label> <h4>PassWord : </h4></label>
+                    <label> <h4>Password : </h4></label>
                     <div className='col-md-4'>
-                        <h3>********</h3>
+                        <h3>{this.state.password}</h3>
                     </div>
+                    <div className='col-md-2'>
+                    
+                            <i className="fa fa-eye  fa-2x"
+                                onClick={this.showPassword}
+                            ></i>
+                    
+                    </div>
+                    
+                    
                 </div>
 
                 <div className="fixed-bottom">

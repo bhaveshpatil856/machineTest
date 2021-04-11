@@ -12,7 +12,7 @@ class AddTask extends Component{
             title:'',
             Completed: false
         }
-        this.validator = new SimpleReactValidator({autoForceUpdate: this});
+        this.validator = new SimpleReactValidator({autoForceUpdate: this,className: 'text-danger'});
     }
 
     handleInputData= (e) => {

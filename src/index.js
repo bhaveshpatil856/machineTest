@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 import {createStore,applyMiddleware} from 'redux';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/font-awesome/css/font-awesome.css";
 import Thunk from 'redux-thunk';
 import App from './app';
 import reducers, { persistConfig } from './store';

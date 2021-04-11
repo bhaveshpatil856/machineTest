@@ -12,7 +12,19 @@ class Login extends Component{
             userName:"",
             userPassword:"",
         }
-        this.validator = new SimpleReactValidator({autoForceUpdate: this});
+        this.validator = new SimpleReactValidator({
+            autoForceUpdate: this,
+            className: 'text-danger',
+            validators: {
+                userPassword: {  // name the rule
+                  message: 'Password must contains minimum eight characters, at least one letter, one number and one special character',
+                  rule: (val, params, validator) => {
+                    return validator.helpers.testRegex(val,/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i) && params.indexOf(val) === -1
+                  },
+                  //messageReplace: (message, params) => message.replace(':values', this.helpers.toSentence(params)),  // optional
+                  required: true  // optional
+                }
+              }});
         
     }
 
@@ -50,6 +62,7 @@ class Login extends Component{
                 <div className="col-md-8">
                   <form onSubmit={this.HandleFormData}>
                    <div className="form-group">
+                       <h5>Username</h5>
                         <input className="form-control" 
                                type="text"
                                placeholder="userName"
@@ -61,16 +74,15 @@ class Login extends Component{
                             }
                     </div>
                     <div className="form-group">
+                    <h5>Password</h5>
                         <input className="form-control" 
                                type="password"
                                placeholder="userPassword"
                                name="userPassword"
                                onChange={this.handleInputData}
                         />
-                        {
-                               this.validator.message('userPassword', this.state.userPassword, 'required|min:8')
+                        {this.validator.message('userPassword', this.state.userPassword, 'required|userPassword')}
 
-                        }
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>

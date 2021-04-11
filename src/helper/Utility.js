@@ -8,7 +8,7 @@ export const addTaskUtility = (oldstate,nextAction) => {
     console.log(existingItem);
     
     if(existingItem){
-        alert("ID already Present.. Retry with Another One");
+        alert("ID already Present..\nOnce take a look to data & Retry with Another One");
         return [...oldstate];
     }
     else{

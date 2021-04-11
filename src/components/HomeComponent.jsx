@@ -28,9 +28,9 @@ class Home extends Component{
                     Select Language
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                    <Dropdown.Item id="reactJs" onClick={this.handleInput}  >React JS</Dropdown.Item>
-                    <Dropdown.Item id="angular" onClick={this.handleInput} >Angular</Dropdown.Item>
-                    <Dropdown.Item id="html" onClick={this.handleInput} >HTML</Dropdown.Item>
+                    <Dropdown.Item id="ReactJs" onClick={this.handleInput}  >React JS</Dropdown.Item>
+                    <Dropdown.Item id="Angular" onClick={this.handleInput} >Angular</Dropdown.Item>
+                    <Dropdown.Item id="HTML" onClick={this.handleInput} >HTML</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
 
